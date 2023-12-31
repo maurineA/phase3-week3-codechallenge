@@ -13,3 +13,7 @@ class Customer(Base):
     #relations
     reviews = relationship("Review", back_populates="customer")
     restaurants = relationship("Restaurant", secondary="reviews", back_populates="customers")
+
+    # returns the full name of the customer, with the first name and the last name  concatenated
+    def full_name(self):
+        return f"{self.first_name} {self.last_name}"

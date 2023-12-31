@@ -9,30 +9,32 @@ engine = create_engine(DATABASE_URL)
 session = Session(engine)
 
 # Create instances
-restaurant1 = Restaurant(name="Hotpoint", price=3)
-restaurant2 = Restaurant(name="Yummies", price=4)
+restaurant1 = Restaurant(name="Hotpoint", price=300)
+restaurant2 = Restaurant(name="Yummies", price=500)
 
-customer1 = Customer(first_name="John", last_name="Doe")
-customer2 = Customer(first_name="Jane", last_name="Doe")
+customer1 = Customer(first_name="Elisha", last_name="Mwangi")
+customer2 = Customer(first_name="Sophia", last_name="Njeri")
 
 # Add reviews
 customer1.add_review(restaurant1, 5, session)
-customer1.add_review(restaurant2, 4, session)
-customer2.add_review(restaurant1, 3, session)
+customer2.add_review(restaurant2, 4, session)
+customer1.add_review(restaurant1, 3, session)
 
-# Print customer output
+# customer details
 print(customer1.full_name())
-print(customer1.reviews(session))
-print(customer1.restaurants(session))
-print(customer1.favorite_restaurant(session).name)
+print([review.full_review() for review in customer1.reviews])
+print([restaurant.name for restaurant in customer1.restaurants])
+favorite_restaurant = customer1.favorite_restaurant(session)
+print(favorite_restaurant.name if favorite_restaurant else "No favorite restaurant")
 
-# Print restaurant information
-print(restaurant1.reviews(session))
-print(restaurant1.customers(session))
+# restaurant information
+print([review.full_review() for review in restaurant1.reviews(session)])
+print([customer.full_name() for customer in restaurant1.customers(session)])
 print(restaurant1.all_reviews(session))
-print(Restaurant.fanciest(session).name)
+fanciest_restaurant = Restaurant.fanciest(session)
+print(fanciest_restaurant.name if fanciest_restaurant else "No fanciest restaurant")
 
-# Print review information
-print(Review.all_reviews(session))
+# review details
+print([review.full_review() for review in Review.all(session)])
 
 session.close()

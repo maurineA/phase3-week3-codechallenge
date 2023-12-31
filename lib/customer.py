@@ -5,4 +5,7 @@ Base = declarative_base()
 
 class Customer(Base):
     __tablename__ = "customers"
-    pass
+    
+    id = Column(Integer, primary_key=True, index=True)
+    first_name = Column(String)
+    last_name = Column(String)

@@ -1,5 +1,6 @@
 from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship, declarative_base, Session
+from lib.review import Review
 
 Base = declarative_base()
 
@@ -31,3 +32,10 @@ class Customer(Base):
         session.add(review)
         session.commit()
         return review
+    
+    # takes a `restaurant` (an instance of the `Restaurant` class) and - removes **all** their reviews for this restaurant - you will have to delete rows from the `reviews` table to get this to work!
+    def delete_reviews(self, restaurant, session: Session):
+        reviews_to_delete = [review for review in self.reviews if review.restaurant == restaurant]
+        for review in reviews_to_delete:
+            session.delete(review)
+        session.commit()

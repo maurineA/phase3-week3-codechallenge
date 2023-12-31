@@ -23,3 +23,14 @@ class Restaurant(Base):
             .limit(1)
             .first()
         )
+    
+    
+    #should return an list of strings with all the reviews for this restaurant
+    def reviews(self, session: Session):
+        return [review.full_review() for review in self.reviews]
+
+    def customers(self, session: Session):
+        return [customer.full_name() for customer in self.customers]
+
+    def all_reviews(self, session: Session):
+        return [review.full_review() for review in self.reviews]

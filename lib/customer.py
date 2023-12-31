@@ -24,3 +24,10 @@ class Customer(Base):
         if sorted_reviews:
             return sorted_reviews[0].restaurant
         return None
+    
+    # takes a `restaurant` (an instance of the `Restaurant` class) and a rating - creates a new review for the restaurant with the given `restaurant_id`
+    def add_review(self, restaurant, rating, session: Session):
+        review = Review(customer=self, restaurant=restaurant, star_rating=rating)
+        session.add(review)
+        session.commit()
+        return review

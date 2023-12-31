@@ -5,4 +5,7 @@ Base = declarative_base()
 
 class Restaurant(Base):
     __tablename__ = "restaurants"
-    pass
+    
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String, index=True)
+    price = Column(Integer)

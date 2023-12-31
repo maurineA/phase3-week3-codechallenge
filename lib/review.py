@@ -6,4 +6,9 @@ Base = declarative_base()
 class Review(Base):
     __tablename__ = "reviews"
 
-    pass
+    id = Column(Integer, primary_key=True, index=True)
+    star_rating = Column(Integer)
+    restaurant_id = Column(Integer, ForeignKey("restaurants.id"))
+    customer_id = Column(Integer, ForeignKey("customers.id"))
+
+    

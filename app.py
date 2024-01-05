@@ -2,13 +2,12 @@ from sqlalchemy.orm import Session
 from sqlalchemy import create_engine
 from lib.customer import Customer
 from lib.restaurant import Restaurant
+from lib.base import session
 
-DATABASE_URL = "sqlite:///restaurant_review.db"
-engine = create_engine(DATABASE_URL)
-session = Session(engine)
+
 
 # Create instances
-restaurant = Restaurant(name="Tasty Burgers", price=400)
+restaurant = Restaurant(name=" Cheka", price=400)
 customer = Customer(first_name="John", last_name="Doe")
 
 # Add a review

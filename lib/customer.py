@@ -1,12 +1,11 @@
 from sqlalchemy import Column, Integer, String
-from sqlalchemy.orm import relationship
+from sqlalchemy.orm import relationship, configure_mappers
 from review import Review
 from base import Base
 
 
-
 class Customer(Base):
-    __tablename__ = "customers"
+    __tablename__ = 'customers'
 
     id = Column(Integer, primary_key=True)
     first_name = Column(String)
@@ -14,6 +13,13 @@ class Customer(Base):
 
     reviews = relationship("Review", back_populates="customer")
     # restaurants = relationship("Restaurant", secondary="reviews", back_populates="customers")
+
+    def __repr__(self):
+        return (
+            f"Customer {self.id}: "
+            + f"First name {self.first_name}, "
+            + f"Last name {self.last_name}"
+        )
 
     def full_name(self):
         return f"{self.first_name} {self.last_name}"

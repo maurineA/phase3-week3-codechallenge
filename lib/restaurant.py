@@ -1,19 +1,27 @@
 from sqlalchemy import Column, Integer, String
 from base import Base
-from sqlalchemy.orm import relationship
+from sqlalchemy.orm import relationship, configure_mappers
 
+configure_mappers()
 
 
 
 class Restaurant(Base):
-    __tablename__ = "restaurants"
+    __tablename__ = 'restaurants'
 
     id = Column(Integer, primary_key=True)
     name = Column(String)
     price = Column(Integer)
 
-    reviews = relationship("Review", back_populates="customer")
+    reviews = relationship("Review", back_populates="restaurant")
     # customers = relationship("Customer", secondary="reviews", back_populates="restaurants")
+
+    def __repr__(self):
+        return (
+            f"Restaurant {self.id}: "
+            + f"{self.name}, "
+            + f"Price {self.price}"
+        )
 
     @classmethod
     def fanciest(cls, session):

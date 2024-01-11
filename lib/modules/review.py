@@ -1,9 +1,9 @@
 from sqlalchemy import Column, Integer, ForeignKey
-from sqlalchemy.orm import relationship, configure_mappers
-from base import Base
-from restaurant import Restaurant
+from sqlalchemy.orm import relationship
+from .base import Base
 
-configure_mappers()
+
+
 
 
 class Review(Base):

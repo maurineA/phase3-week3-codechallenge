@@ -1,8 +1,8 @@
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine
-from lib.customer import Customer
-from lib.restaurant import Restaurant
-from lib.base import session
+from lib.modules.customer import Customer
+from lib.modules.restaurant import Restaurant
+from lib.modules.base import session
 
 
 

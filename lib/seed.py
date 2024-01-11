@@ -1,11 +1,11 @@
 from faker import Faker
-from customer import Customer  #
-from restaurant import Restaurant
-from review import Review
+from modules.customer import Customer  
+from modules.restaurant import Restaurant
+from modules.review import Review
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
 import random
-from base import Base 
+from modules.base import Base 
 
 fake = Faker()
 

@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String
-from sqlalchemy.orm import relationship, configure_mappers
-from review import Review
-from base import Base
+from sqlalchemy.orm import relationship
+from .review import Review
+from .base import Base
 
 
 class Customer(Base):

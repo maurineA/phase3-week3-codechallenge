@@ -1,9 +1,6 @@
 from sqlalchemy import Column, Integer, String
-from base import Base
-from sqlalchemy.orm import relationship, configure_mappers
-
-configure_mappers()
-
+from .base import Base
+from sqlalchemy.orm import relationship
 
 
 class Restaurant(Base):

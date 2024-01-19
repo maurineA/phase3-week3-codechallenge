@@ -8,22 +8,15 @@ By Maurine Wambui
 
 Is a python challenge based on SQLALchemy working with a restaurant review domain checking the SQLAlchemy Migrations,  SQLAlchemy Relationships, Class and Instance Methods, SQLAlchemy Querying of  restaurants, customers and reviews. `Restaurant` has many `Review`s, a `Customer` has many `Review`s, and a `Review` belongs to a `Restaurant` and to a `Customer`. `Restaurant` - `Customer` is a many to many relationship.
 
-# How to Use
 
-<ul>
-<li>Test the code in the python environment shell
-      <li>python/app.py  #my test are not passing i'm having error, still working on it</li>
-      
-</li>
-
-</ul>
 
 # Requirements
 
 <ul>
-<li>A computer with python environment, pipenv and pipenvshell</li>
+<li>A computer with python environment, pipenv and pipenv shell</li>
 <li>Access to the internet.</li>
 </ul>
+
 
 # Installation Process
 
@@ -35,6 +28,18 @@ Is a python challenge based on SQLALchemy working with a restaurant review domai
 <li>activate the shell</li>
 </ul>
 
+
+# How to Use
+
+<ul>
+<li>Test the code in the python environment shell
+      <li>python/seed.py</li>
+      
+</li>
+
+</ul>
+
+
 # Technologies Used
 <ul>
 <li>Python</li>
@@ -44,6 +49,7 @@ Is a python challenge based on SQLALchemy working with a restaurant review domai
 # Support and Contact Details
 
 Incase of any queries, need for collaboration or issues with this code, feel free to reach me at maurine.wambui@student.moringaschool.com
+
 
 # License
 

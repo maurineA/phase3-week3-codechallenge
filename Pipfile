@@ -6,7 +6,6 @@ name = "pypi"
 [packages]
 alembic = "1.7.7"
 importlib-metadata = "4.11.3"
-faker = "4.11.0"
 sqlalchemy = "1.4.46"
 
 [dev-packages]

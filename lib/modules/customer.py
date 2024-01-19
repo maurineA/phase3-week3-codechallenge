@@ -12,32 +12,30 @@ class Customer(Base):
     last_name = Column(String)
 
     reviews = relationship("Review", back_populates="customer")
-    # restaurants = relationship("Restaurant", secondary="reviews", back_populates="customers")
-
-    def __repr__(self):
-        return (
-            f"Customer {self.id}: "
-            + f"First name {self.first_name}, "
-            + f"Last name {self.last_name}"
-        )
 
     def full_name(self):
         return f"{self.first_name} {self.last_name}"
-
+    
     def favorite_restaurant(self):
-        sorted_reviews = sorted(self.reviews, key=lambda x: x.star_rating, reverse=True)
-        if sorted_reviews:
-            return sorted_reviews[0].restaurant
-        return None
+        # Assuming that the highest rating means the favorite restaurant
+        highest_rating_review = max(self.reviews, key=lambda review: review.star_rating, default=None)
+        return highest_rating_review.restaurant if highest_rating_review else None
+    
+    def add_review(self, restaurant, rating):
+        new_review = Review(restaurant=restaurant, customer=self, star_rating=rating)
+        self.reviews.append(new_review)
 
-    def add_review(self, restaurant, rating, session):
-        review = Review(customer=self, restaurant=restaurant, star_rating=rating)
-        session.add(review)
-        session.commit()
-        return review
+    def get_reviews(self):
+        return [review.full_review() for review in self.reviews]
 
-    def delete_reviews(self, restaurant, session):
-        reviews_to_delete = [review for review in self.reviews if review.restaurant == restaurant]
-        for review in reviews_to_delete:
-            session.delete(review)
-        session.commit()
+    def delete_reviews(self, restaurant):
+        # Remove all reviews for the specified restaurant
+        self.reviews = [review for review in self.reviews if review.restaurant != restaurant]
+
+
+    def restaurants(self):
+        return [review.restaurant.name for review in self.reviews]
+
+    
+   
+  

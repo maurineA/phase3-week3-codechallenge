@@ -12,7 +12,7 @@ Is a python challenge based on SQLALchemy working with a restaurant review domai
 
 <ul>
 <li>Test the code in the python environment shell
-      <li>python/app.py  #my test are not passing i'm having errors in folders in the orm, still working on it</li>
+      <li>python/app.py  #my test are not passing i'm having error, still working on it</li>
       
 </li>
 
